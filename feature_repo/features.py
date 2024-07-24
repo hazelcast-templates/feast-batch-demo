@@ -2,12 +2,9 @@ from datetime import timedelta
 from feast import FeatureView, Entity, ValueType
 from feast.infra.offline_stores.contrib.postgres_offline_store.postgres_source import PostgreSQLSource
 
-# from hazelcast_offline_store import HazelcastSource
-
-# Add an entity for users
 user_entity = Entity(
     name="user_id",
-    description="A user that has executed a transaction or received a transaction",
+    description="A user that has executed a transaction",
     value_type=ValueType.STRING
 )
 

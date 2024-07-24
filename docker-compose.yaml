@@ -22,9 +22,6 @@ services:
       dockerfile: "demo.Dockerfile"
     ports:
       - "8888:8888"
-    volumes:
-      - "./feature_repo:/home/sam/feature_repo"
-      - "./jet:/home/sam/jet"
     depends_on:
       - "hazelcast"
       - "postgresql"

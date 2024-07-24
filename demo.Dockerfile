@@ -24,11 +24,11 @@ RUN \
     chmod +x /home/sam/.local/bin/run &&\
     chown -R sam:sam /home/sam/.local
 
-COPY etc/create_data_connection.sql /home/sam/etc
-
 USER sam
 
 WORKDIR /home/sam
+
+COPY etc/create_data_connection.sql /home/sam/etc
 
 RUN \
     curl -L -o install.sh https://hazelcast.com/clc/install.sh &&\
@@ -38,6 +38,8 @@ RUN \
 ENV HZ_PHONE_HOME_ENABLED=false
 ENV CLC_SKIP_UPDATE_CHECK=1
 
+COPY feature_repo ./feature_repo/
+COPY jet ./jet/
 COPY requirements.txt .
 
 RUN \
