@@ -1,0 +1,13 @@
+note: |
+  Feast batch project with Hazelcast online store was created successfully.
+  
+  You can run start the project using:
+  ```
+  docker-compose up
+  ```
+  
+  After the project starts, visit the Jupyter Notebook URL.
+  You can find out the URL using:
+  ```
+  docker-compose logs demo 2>&1 | grep 127.0.0.1
+

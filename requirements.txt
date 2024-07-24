@@ -1,0 +1,5 @@
+jupyterlab==4.2.3
+pandas==2.2.2
+feast[hazelcast]
+feast[postgres]
+psutil==6.0.0

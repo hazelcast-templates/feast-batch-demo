@@ -1,0 +1,32 @@
+version: "3.0"
+
+services:
+
+  postgresql:
+    image: docker.io/postgres:15
+    environment:
+       POSTGRES_DB: demo
+       POSTGRES_USER: demo
+       POSTGRES_PASSWORD: demo
+    volumes:
+      - "./etc/init.sql:/docker-entrypoint-initdb.d/init.sql"
+
+  hazelcast:
+    build:
+      context: "."
+      dockerfile: "member.Dockerfile"
+
+  demo:
+    build:
+      context: "."
+      dockerfile: "demo.Dockerfile"
+    ports:
+      - "8888:8888"
+    volumes:
+      - "./feature_repo:/home/sam/feature_repo"
+      - "./jet:/home/sam/jet"
+    depends_on:
+      - "hazelcast"
+      - "postgresql"
+
+
