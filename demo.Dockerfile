@@ -38,8 +38,8 @@ RUN \
 ENV HZ_PHONE_HOME_ENABLED=false
 ENV CLC_SKIP_UPDATE_CHECK=1
 
-COPY feature_repo ./feature_repo/
-COPY jet ./jet/
+COPY --chown=sam:sam feature_repo /home/sam/feature_repo/
+COPY --chown=sam:sam jet /home/sam/jet/
 COPY requirements.txt .
 
 RUN \
@@ -55,4 +55,4 @@ RUN \
     clc config add default cluster.address=hazelcast
 
 ENTRYPOINT ["/home/sam/.local/bin/jupyter"]
-CMD ["lab", "--ip", "0.0.0.0", "--no-browser"]
+CMD ["lab", "--ip", "0.0.0.0", "--no-browser", "--LabApp.token", ""]
