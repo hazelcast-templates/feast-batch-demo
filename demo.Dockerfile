@@ -5,13 +5,14 @@ RUN useradd sam -m
 RUN \
     apt-get update && \
     apt-get install -y \
-        python3-pip  \
+        python3-venv  \
         openjdk-21-jdk-headless \
         curl \
         vim \
         nano \
         jq \
         ncat \
+        make \
         && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists && \
@@ -42,17 +43,18 @@ COPY --chown=sam:sam feature_repo /home/sam/feature_repo/
 COPY --chown=sam:sam jet /home/sam/jet/
 COPY requirements.txt .
 
-RUN \
-    pip install --user --break-system-packages -r requirements.txt --no-warn-script-location &&\
-    printf "\nexport PATH=$PATH:$HOME/.local/bin:$HOME/.hazelcast/bin\n\n" >> .bashrc
+ENV PATH="$PATH:/home/sam/.local/bin:/home/sam/.hazelcast/bin:/home/sam/.venv/bin"
 
-ENV PATH="$PATH:/home/sam/.local/bin:/home/sam/.hazelcast/bin"
+RUN \
+    python3 -m venv .venv &&\
+    $HOME/.venv/bin/pip install -r requirements.txt
 
 COPY BatchFeatures.ipynb .
 
 RUN \
     mkdir -p /home/sam/feast/data &&\
-    clc config add default cluster.address=hazelcast
+    clc config add default cluster.address=hazelcast &&\
+    run build_jet batch_features
 
-ENTRYPOINT ["/home/sam/.local/bin/jupyter"]
+ENTRYPOINT ["/home/sam/.venv/bin/jupyter"]
 CMD ["lab", "--ip", "0.0.0.0", "--no-browser", "--LabApp.token", ""]

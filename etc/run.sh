@@ -21,7 +21,7 @@ build_jet () {
   dir="jet/$dir"
   local build_dir="$HOME/build/$dir"
   mkdir -p "$build_dir"
-  GRADLE_OPTIONS="-Dorg.gradle.project.buildDir=$build_dir --project-cache-dir=$build_dir" make -C "$dir"
+  GRADLE_OPTIONS="-Dorg.gradle.project.buildDir=$build_dir --project-cache-dir=$build_dir --no-daemon" make -C "$dir"
 }
 
 cmd="${1:-}"
