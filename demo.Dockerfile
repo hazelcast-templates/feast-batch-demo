@@ -57,4 +57,4 @@ RUN \
     run build_jet batch_features
 
 ENTRYPOINT ["/home/sam/.venv/bin/jupyter"]
-CMD ["lab", "--ip", "0.0.0.0", "--no-browser", "--LabApp.token", ""]
+CMD ["lab", "--ip", "0.0.0.0", "--no-browser", "--ServerApp.token", ""]
