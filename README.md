@@ -1,13 +1,23 @@
 # Feast Batch Transformation and Materialization Demo
 
-## Usage
+This project creates a project that demonstrates Feast batch transformation and materialization with a Hazelcast online store.
 
-You can run start the project running:
-  
-    docker-compose up
+## Requirements
 
-  
-After the project starts, visit the Jupyter Notebook URL.
-You can find out the URL using:
+* Linux / MacOS or Windows with 64bit Intel/AMD or ARM architecture
+* Install [Hazelcast CLC](https://docs.hazelcast.com/clc/latest/install-clc)
+* Docker with Docker Compose or equivalent container runtime
 
-    docker-compose logs demo 2>&1 | grep 127.0.0.1
+## Create the Project
+
+Once the requirements are satisfied, you can create the project.
+
+To create the project, run the following command:
+
+```
+clc project create -t feast-batch-demo
+```
+
+## Further Instructions
+
+`README.md` in the generated project contains further instructions.
