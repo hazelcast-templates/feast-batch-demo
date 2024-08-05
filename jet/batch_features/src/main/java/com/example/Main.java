@@ -69,7 +69,7 @@ public class Main {
             throw new RuntimeException("dataSetPath is required");
         }
         var hz = Hazelcast.bootstrappedInstance();
-        var endDate = LocalDateTime.now();
+        var endDate = LocalDateTime.of(2024, 7, 24, 8, 0);
         var dataSetPath = args[0];
         backfillFeatures(hz, dataSetPath, endDate);
     }
