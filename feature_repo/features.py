@@ -11,7 +11,6 @@ user_entity = Entity(
 user_transaction_count_7d_fv = FeatureView(
     name="user_transaction_count_7d",
     entities=[user_entity],
-    ttl=timedelta(weeks=1),
     source=PostgreSQLSource(
         table="user_transaction_count_7d",
         timestamp_field="feature_timestamp"))
