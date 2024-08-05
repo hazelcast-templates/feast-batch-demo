@@ -4,7 +4,7 @@ This project creates a project that demonstrates Feast batch transformation and 
 
 ## Requirements
 
-* Linux / MacOS or Windows with 64bit Intel/AMD or ARM architecture
+* Linux / macOS or Windows with 64bit Intel/AMD or ARM architecture
 * Install [Hazelcast CLC](https://docs.hazelcast.com/clc/latest/install-clc)
 * Docker with Docker Compose or equivalent container runtime
 
